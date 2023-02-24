@@ -1,4 +1,6 @@
 My official personal landing page! 
 
-[Bedimcode](https://www.youtube.com/c/Bedimcode)
+
+
+Credits - Fonts - Icons and Javascript/CSS estructure to [Bedimcode](https://www.youtube.com/c/Bedimcode)
 
