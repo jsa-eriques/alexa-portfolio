@@ -40,8 +40,8 @@ const skillsContent = document.getElementsByClassName('skills__content'),
     skillsHeader = document.querySelectorAll('.skills__header')
 
 
-    toggleSkills = () => {
-        let itemClass = this.parentNode.getElementsByClassName
+function toggleSkills() {
+        let itemClass = this.parentNode.className
 
         for (i = 0; i < skillsContent.length; i += 1) {
             skillsContent[i].className = 'skills__content skills__close'
@@ -58,13 +58,18 @@ const skillsContent = document.getElementsByClassName('skills__content'),
 /*==================== QUALIFICATION TABS ====================*/
 
 const tabs = document.querySelectorAll('[data-target]'),
-    tabContents = document.querySelectorAll('[data-content]')
+        tabContents = document.querySelectorAll('[data-content]')
 
 tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', () =>{
         const target = document.querySelector(tab.dataset.target)
 
         tabContents.forEach(tabContent => {
+            tabContent.classList.remove('qualification__active')
+        })
+        target.classList.add('qualification__active')
+
+        tabs.forEach(tab =>{
             tab.classList.remove('qualification__active')
         })
         tab.classList.add('qualification__active')
@@ -72,12 +77,69 @@ tabs.forEach(tab => {
 })
 
 
+
+// const tabs = document.querySelectorAll('[data-target]'),
+//     tabContents = document.querySelectorAll('[data-content]')
+
+// tabs.forEach(tab => {
+//     tab.addEventListener('click', () =>{
+//         const target = document.querySelector(tab.dataset.target)
+
+//         tabContents.forEach(tabContent =>{
+//             tabContent.classList.remove('qualification__active')
+//         })
+//         target.classList.add('qualification__active')
+
+//         tab.forEach(tab =>{
+//             tab.classList.remove('qualification__active')
+//         })
+//         tab.classList.add('qualification__active')
+//     })
+// })
+
+
  
 /*==================== SERVICES MODAL ====================*/
 
+const modalViews = document.querySelectorAll('.services__modal'),
+      modalBtns = document.querySelectorAll('.services__button'),
+      modalCloses = document.querySelectorAll('.services__modal-close');
+
+let modal = function(modalClick){
+    modalViews[modalClick].classList.add('active-modal')
+}
+
+modalBtns.forEach((modalBtn, i) => {
+    modalBtn.addEventListener('click', () => {
+        modal(i)
+    })
+})
+
+modalCloses.forEach((modalClose) => {
+    modalClose.addEventListener('click', () => {
+        modalViews.forEach((modalView) => {
+            modalView.classList.remove('active-modal')
+        })
+    })
+})
 
 /*==================== PORTFOLIO SWIPER  ====================*/
 
+const swiper = new Swiper(".portfolio-container", {
+    cssMode: true,
+    loop: true,
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    // mousewheel: true,
+    // keyboard: true,
+  });
 
 /*==================== TESTIMONIAL ====================*/
 
